@@ -11,18 +11,19 @@ import useVisualMode from "hooks/useVisualMode";
 
 
 export default function Appointment(props) {
-  const EMPTY = "EMPTY";
-  const SHOW = "SHOW";
-  const CREATE = "CREATE";
-  const SAVING = "SAVING";
-  const DELETING = "DELETING";
-  const CONFIRM = "CONFIRM";
-  const EDIT = "EDIT";
-  const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = "ERROR_DELETE";
+
+  const EMPTY = 'EMPTY';
+  const SHOW = 'SHOW';
+  const CREATE = 'CREATE';
+  const SAVING = 'SAVING';
+  const DELETING = 'DELETING';
+  const CONFIRM = 'CONFIRM'
+  const EDIT = 'EDIT';
+  const ERROR_SAVE = 'ERROR_SAVE';
+  const ERROR_DELETE = 'ERROR_DELETE';
 
   const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
+      props.interview ? SHOW : EMPTY
   );
 
   function save(name, interviewer) {
@@ -31,32 +32,36 @@ export default function Appointment(props) {
       interviewer,
     };
     transition(SAVING);
-
-    if (mode === CREATE) {
-      props
-        .bookInterview(props.id, interview)
-        .then(() => transition(SHOW))
-        .catch(() => {
-          transition(ERROR_SAVE, true);
-        });
-    } else if (mode === EDIT) {
-      props
-        .updateInterview(props.id, interview)
-        .then(() => transition(SHOW))
-        .catch(() => {
-          transition(ERROR_SAVE, true);
-        });
-    }
-  }
+    
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(() => {
+        transition(ERROR_SAVE, true)
+      });
+  };
 
   function deleteAppointment() {
     transition(CONFIRM);
   }
 
-  function handleEditAppointment() {
+  function editAppointment(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer,
+    };
     transition(EDIT);
+  
+    props
+      .updateInterview(props.id, interview)
+      .then(() => transition(SHOW))
   }
 
+  
+  function handleEditAppointment(name, interviewer) {
+    editAppointment(name, interviewer);
+  }
+    
   function onConfirmDelete() {
     transition(DELETING, true);
 
@@ -64,47 +69,68 @@ export default function Appointment(props) {
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => {
-        transition(ERROR_DELETE, true);
+        transition(ERROR_DELETE, true)
       });
   }
+  
+  
 
   return (
     <article className="appointment">
-      <Header time={props.time} />
 
-      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-
-      {mode === CREATE && (
-        <Form interviewers={props.interviewers} onCancel={back} onSave={save} />
-      )}
-
-      {mode === EDIT && (
-        <Form
-          student={props.interview.student}
-          interviewer={props.interview.interviewer.id}
-          interviewers={props.interviewers}
-          onCancel={back}
-          onSave={save}
+        <Header
+          time={props.time}
         />
-      )}
 
-      {props.interview && mode === SHOW && (
-        <Show
-          student={props.interview.student}
-          interviewer={props.interview.interviewer}
-          onDelete={() => deleteAppointment(props.id)}
-          onEdit={() => handleEditAppointment(props.interview.student, props.interview.interviewer)}
-        />
-      )}
+        {mode === EMPTY && (
+          <Empty 
+            onAdd={() => transition(CREATE)} 
+          />
+          )
+        }
 
-      {mode === SAVING && <Status message={"Saving appointment..."} />}
+        {mode === CREATE && (
+          <Form 
+            interviewers={props.interviewers}
+            onCancel={back} onSave={save}
+          />
+          )
+        }
 
-      {mode === DELETING && <Status message={"Deleting appointment..."} />}
+        {mode === EDIT && (
+          <Form
+            student={props.interview.student}
+            interviewer={props.interview.interviewer.id}
+            interviewers={props.interviewers}
+            onSave={save}
+            onCancel={back}
+          />
+          )
+        }
 
-      {mode === CONFIRM && (
+        {props.interview && mode === SHOW && (
+          <Show
+            student={props.interview.student}
+            interviewer={props.interview.interviewer}
+            onDelete={() => deleteAppointment(props.id)}
+            onEdit={() => handleEditAppointment(props.interview.student, props.interview.interviewer)}
+          />
+         )
+        }
+        
+        {mode === SAVING && <Status message={'Saving appointment...'}/>}
+
+        {mode === DELETING && (
+          <Status 
+          message={'Deleting appointment...'}
+          />
+          )
+        } 
+
+        {mode === CONFIRM && (
         <Confirm
           onCancel={() => back()}
-          message={"Are you sure you want to delete this appointment?"}
+          message={'Are you sure you want to delete this appointment?'}
           onConfirm={onConfirmDelete}
         />
         )
