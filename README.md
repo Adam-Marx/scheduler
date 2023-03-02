@@ -21,7 +21,7 @@ This webapp was also a learning grounds for my knowledge of testing logic and Re
 
 This entailed using unit tests, integration testing, as well as end-to-end testing with Cypress, the last of which was brand new to me.
 
-The files have a 98% testing coverage score.
+The files have a 98% testing coverage score, with 7 test suites and 44 tests.
 
 ## Setup
 
