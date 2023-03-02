@@ -3,14 +3,17 @@ This is my first webapp that uses React, its purpose being to schedule interview
 
 Since I was using React, all of the components have their own files, teaching me how to use props,hooks, and JSX.
 
-![root](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_01.png?raw=true)
 *The home page, hovering over one of the appointment to reveal delete and edit buttons.*
+![root](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_01.png?raw=true)
 
-![deleting](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_02.png?raw=true)
+
 *Confirmation prompt for deleting appointment*
+![deleting](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_02.png?raw=true)
 
-![form](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_03.png?raw=true)
+
 *The form to create/edit a new appointment. There must be both a student name and interviewer selected for the appointment to be created.*
+![form](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_03.png?raw=true)
+
 
 ## Thoroughly Tested
 
