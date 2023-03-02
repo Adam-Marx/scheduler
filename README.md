@@ -1,14 +1,16 @@
 # Interview Scheduler
 This is my first webapp that uses React, its purpose being to schedule interviews between students and interviewers. Users can add new appointments first by checking which days have empty spots available, then clicking on the plus symbol. This will bring up a form where the user can input the student name and select the interviewer available on that day and time. Users can also edit and delete appointments that have been created, with the webapp succesfully updating the spots remaining in the case of either of those actions.
 
-In learning and using React, all of the components have their own files, teaching me thoroughly how to use props and hooks, and the good practices that come along with the territory.
+Since I was using React, all of the components have their own files, teaching me how to use props,hooks, and JSX.
 
 ![root](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_01.png?raw=true)
+*The home page, hovering over one of the appointment to reveal delete and edit buttons.*
 
 ![deleting](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_02.png?raw=true)
+*Confirmation prompt for deleting appointment*
 
 ![form](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_03.png?raw=true)
-
+*The form to create/edit a new appointment. There must be both a student name and interviewer selected for the appointment to be created.*
 
 ## Thoroughly Tested
 
