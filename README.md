@@ -1,7 +1,9 @@
 # Interview Scheduler
-This is my first webapp that uses React, its purpose being to schedule interviews between students and interviewers. Users can add new appointments first by checking which days have empty spots available, then clicking on the plus symbol. This will bring up a form where the user can input the student name and select the interviewer available on that day and time. Users can also edit and delete appointments that have been created, with the webapp succesfully updating the spots remaining in the case of either of those actions.
+Interviewer Scheduler uses React, its purpose being to schedule interviews between students and interviewers. 
 
-Since I was using React, all of the components have their own files, teaching me how to use props,hooks, and JSX.
+Users can add new appointments first by checking which days have empty spots available, then clicking on the plus symbol. This will bring up a form where the user can input the student name and select the interviewer available on that day and time. Users can also edit and delete appointments that have been created, with the webapp succesfully updating the spots remaining in the case of either of those actions.
+
+Since I was using React, all of the components have their own files, teaching me how to use props, hooks, and JSX.
 
 *The home page, hovering over one of the appointment to reveal delete and edit buttons.*
 ![root](https://github.com/Adam-Marx/scheduler/blob/master/README_screenshots/Scheduler_01.png?raw=true)
