@@ -29,6 +29,8 @@ The files have a 98% testing coverage score, with 7 test suites and 44 tests.
 
 Install dependencies with `npm install`.
 
+## Dependencies
+
 - axios version 0.20.0
 - classnames version 2.2.6
 - normalize.css version 8.0.1
